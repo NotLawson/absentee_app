@@ -1,7 +1,7 @@
 FROM python:latest
 
-COPY * /
+COPY app /
 
 RUN python3 -m pip install tensorflow pillow flask numpy
 
-CMD ["/bin/bash"]
+CMD ["python3", "/app/main.py"]
