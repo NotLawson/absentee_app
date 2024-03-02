@@ -3,11 +3,9 @@
 ## Docker (Reccomended)
 Build the container locally
 
-```docker build -t absentee_app https://github.com/notlawson/absentee_app.git```
-
-Then run the container
-
-```docker run absentee_app --ports <outside>:8080```
+```docker run --name absentee_app -p <outside>:8080 -d ghcr.io/notlawson/absentee_app```
 
 ## Python
-Run with <br> `python main.py`
+
+Install packages <br> `pip install tensorflow-cpu==2.15.0 pillow flask numpy`
+<br> Run with <br> `python main.py`
