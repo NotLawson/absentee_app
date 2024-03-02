@@ -10,6 +10,7 @@ tf.keras = keras
 
 MODEL = tf.keras.models.load_model("model/model.h5", compile=False)
 
+print(f"TF Version: {tf.__version__}\nKeras Version: {keras.__version__}")
 
 def predict_image(image):
     # Load the labels
