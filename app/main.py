@@ -8,9 +8,10 @@ from PIL import Image, ImageOps
 from flask import Flask, render_template, request
 tf.keras = keras
 
+print(f"TF Version: {tf.__version__}\nKeras Version: {keras.__version__}")
+
 MODEL = tf.keras.models.load_model("model/model.h5", compile=False)
 
-print(f"TF Version: {tf.__version__}\nKeras Version: {keras.__version__}")
 
 def predict_image(image):
     # Load the labels
