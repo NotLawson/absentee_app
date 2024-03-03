@@ -17,7 +17,7 @@ LATE = []
 
 def predict_image(image):
     # Load the labels
-    class_names = open("model/labels.txt", "r").readlines()
+    class_names = open("model/labels.lb", "r").readlines()
 
     # Create the array of the right shape to feed into the keras model
     # The 'length' or number of images you can put into the array is
