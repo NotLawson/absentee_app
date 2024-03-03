@@ -77,6 +77,10 @@ def mark():
     reason = request.form.get("reason")
     time = datetime.now().strftime("%-I:%M %p")
     LATE.append([name, reason, time])
+
+    # TODO: connect to roll system
+    # request.post(uri="<roll>", body = str([name, reason, time]))
+
     return render_template("redirect.html", name = name, reason = reason)
 
 
