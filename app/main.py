@@ -75,7 +75,7 @@ def image():
 def mark():
     name = request.form.get("name")
     reason = request.form.get("reason")
-    time = datetime.now().strftime("%H:%M %p")
+    time = datetime.now().strftime("%-I:%M %p")
     LATE.append([name, reason, time])
     return render_template("redirect.html", name = name, reason = reason)
 
