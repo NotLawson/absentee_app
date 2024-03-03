@@ -4,6 +4,7 @@ import numpy as np
 import base64 as b64
 from io import BytesIO
 import json
+from datetime import datetime
 from PIL import Image, ImageOps
 from flask import Flask, render_template, request
 tf.keras = keras
@@ -54,7 +55,8 @@ def index():
     for student in LATE:
         name = student[0]
         reason = student[1]
-        log_html += f"<li>{name} was late because of a{reason}</li>"
+        time = student[2]
+        log_html += f"<li>{name} was late because of a{reason} at {time}</li>"
     log_html += "</ul>"
     return render_template("index.html", log_html = log_html)
 
@@ -73,7 +75,8 @@ def image():
 def mark():
     name = request.form.get("name")
     reason = request.form.get("reason")
-    LATE.append([name, reason])
+    time = datetime.now().strftime("%H:%M")
+    LATE.append([name, reason, time])
     return render_template("redirect.html", name = name, reason = reason)
 
 
