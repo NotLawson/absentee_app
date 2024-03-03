@@ -1,6 +1,6 @@
 # Absentee app
 
-## Docker (Reccomended)
+## Docker (Recomended)
 
 ```docker run --name absentee_app -p <outside>:8080 -d ghcr.io/notlawson/absentee_app```
 
