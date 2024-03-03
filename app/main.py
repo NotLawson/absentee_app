@@ -12,6 +12,7 @@ print(f"TF Version: {tf.__version__}\nKeras Version: {keras.__version__}")
 
 MODEL = tf.keras.models.load_model("model/model.h5", compile=False)
 
+LATE = []
 
 def predict_image(image):
     # Load the labels
@@ -49,7 +50,13 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    log_html = "<ul>"
+    for student in LATE:
+        name = student[0]
+        reason = student[1]
+        log_html += f"<li>{name} was late because of a{reason}</li>"
+    log_html += "</ul>"
+    return render_template("index.html", log_html = log_html)
 
 @app.route("/subimage", methods = ["POST"])
 def image():
@@ -66,6 +73,7 @@ def image():
 def mark():
     name = request.form.get("name")
     reason = request.form.get("reason")
+    LATE.append([name, reason])
     return render_template("redirect.html", name = name, reason = reason)
 
 
